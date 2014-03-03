@@ -3,7 +3,7 @@ using System.Collections;
 /// <summary>
 /// obvious, right?
 /// </summary>
-public class PlayerMovement : Player
+public class PlayerMovement : MonoBehaviour
 {
     float horizontal;
 
@@ -18,10 +18,6 @@ public class PlayerMovement : Player
     {
         horizontal = Input.GetAxis("Horizontal");
 
-        if (horizontal != 0)
-        {
-            transform.position = new Vector2(transform.position.x + horizontal * Time.deltaTime * 5f, transform.position.y);
-
-        }
+        if (horizontal != 0) transform.position = new Vector2(transform.position.x + horizontal * Time.deltaTime * 5f, transform.position.y);
     }
 }
