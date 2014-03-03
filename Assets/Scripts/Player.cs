@@ -55,6 +55,7 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         state = PlayerState.Dead;
+        Debug.Log("DON'T FORGET THE DEATH ANIMATION! ;)");
     }
 
     void OnGUI()
