@@ -9,7 +9,8 @@ public class BarrierMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		_player = GameObject.Find ("Hero");
+		// I'm get NullReferenceError when I use 
+		_player = GameObject.Find("Hero");
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,7 @@ public class BarrierMovement : MonoBehaviour {
 	#region custom
 	private void _CheckPosition()
 	{
-		if(transform.position.y > transform.position.y)
+		if(transform.position.y > _player.transform.position.y - 10)
 		{
 			_canMove = true;
 		}
@@ -30,12 +31,15 @@ public class BarrierMovement : MonoBehaviour {
 
 	private void _CanMove()
 	{
-		float xpos;
-		
-		if (_isLeft) xpos = -1; 
-		else xpos = 1;
-		
-		transform.position = new Vector2(transform.position.x + xpos * Time.deltaTime * 10f, transform.position.y);
+		if(_canMove)
+		{
+			float xpos;
+			
+			if (_isLeft) xpos = -1; 
+			else xpos = 1;
+			
+			transform.position = new Vector2(transform.position.x + xpos * Time.deltaTime * 10f, transform.position.y);
+		}
 	}
 	#endregion
 }
