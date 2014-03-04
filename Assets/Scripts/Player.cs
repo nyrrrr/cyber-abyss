@@ -3,8 +3,10 @@ using System.Collections;
 /// <summary>
 /// Handles player state
 /// </summary>
-public class Player : MonoBehaviour {
-
+public class Player : MonoBehaviour
+{
+    private float slowFactor = 4f;
+    private float slowTimeScale;
     int count;
     PlayerMovement movementComponent;
 
@@ -31,29 +33,45 @@ public class Player : MonoBehaviour {
     }
     #endregion
 
-    public enum PlayerState { // not sure about those three yet; want to use them instead of booleans
+    public enum PlayerState
+    { // not sure about those three yet; want to use them instead of booleans
         Attacking,
         Falling,
         Dead,
     }
     PlayerState state;
+    private float slowFixedDelta;
+    private float slowMaxDelta;
+    
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
+        Time.timeScale = 1.0f;
         movementComponent = GetComponent<PlayerMovement>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        slowTimeScale = Time.timeScale / slowFactor;
+        slowFixedDelta = Time.fixedDeltaTime / slowFactor;
+        slowMaxDelta = Time.maximumDeltaTime / slowFactor;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         TestMethod();
 
-        if (state == PlayerState.Dead && Input.anyKeyDown)
+        if (state == PlayerState.Dead)
         {
-            Application.LoadLevel(Application.loadedLevel);
+            if (Input.anyKeyDown)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+            SlowDown();
         }
-	}
+    }
 
-    void OnCollisionEnter2D(Collision2D col) {
+    void OnCollisionEnter2D(Collision2D col)
+    {
         state = PlayerState.Dead;
         Debug.Log("DON'T FORGET THE DEATH ANIMATION! ;)");
     }
@@ -68,10 +86,19 @@ public class Player : MonoBehaviour {
     }
 
     #region custom
+    public void SlowDown() {
+        Time.timeScale = Mathf.Lerp(Time.deltaTime, slowTimeScale, Time.time);
+        Time.fixedDeltaTime = slowFixedDelta;
+        Time.maximumDeltaTime = slowMaxDelta;  
+
+        // TODO create analogue method for increasing speed back to normal
+    }
+
     /// <summary>
     /// DON'T YOU DARE FORGET REMOVING ME!!!!
     /// </summary>
-    private void TestMethod() {
+    private void TestMethod()
+    {
 
         // TODO remove later
         count += Time.frameCount;

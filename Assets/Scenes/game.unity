@@ -126,7 +126,8 @@ GameObject:
   - 50: {fileID: 714315622}
   - 114: {fileID: 714315624}
   - 114: {fileID: 714315623}
-  - 61: {fileID: 714315621}
+  - 60: {fileID: 714315621}
+  - 58: {fileID: 714315625}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -169,8 +170,8 @@ Transform:
   m_Children:
   - {fileID: 1362252395}
   m_Father: {fileID: 0}
---- !u!61 &714315621
-BoxCollider2D:
+--- !u!60 &714315621
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -178,17 +179,22 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .4375, y: 1}
-  m_Center: {x: 0, y: 0}
+  m_Poly:
+    m_Paths:
+    - - {x: .156735092, y: .503436089}
+      - {x: -.153788984, y: .499064445}
+      - {x: -.154725045, y: -.188437462}
+      - {x: -.00273350487, y: -.494952202}
+      - {x: .157422081, y: -.185852051}
 --- !u!50 &714315622
 Rigidbody2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714315618}
-  m_Mass: 1
+  m_Mass: 80
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: .100000001
   m_GravityScale: 1
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -217,6 +223,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e1ba6cfca1d4145a76ccac37c946a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &714315625
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714315618}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .125
+  m_Center: {x: 0, y: -.379999995}
 --- !u!1 &1362252390
 GameObject:
   m_ObjectHideFlags: 0
