@@ -94,11 +94,11 @@ public class Player : MonoBehaviour
 
     /// <summary>
     /// DON'T YOU DARE FORGET REMOVING ME!!!!
+	/// LOL! Now who's awesome at commenting?? haha! xD
     /// </summary>
     private void TestMethod()
     {
-
-        // TODO remove later
+		// TODO remove later
 		count += Time.frameCount;
         if (count % 120 == 0) GameObject.Instantiate(Resources.Load("CollidableDummy"), new Vector3(5, transform.position.y - 10, transform.position.z), Quaternion.Euler(Vector3.zero));
     }
