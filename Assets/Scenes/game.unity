@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 746730741}
   m_GameObject: {fileID: 591616468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 0}
+  m_LocalPosition: {x: 4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -267,7 +267,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714315618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 16, z: 0}
+  m_LocalPosition: {x: 0, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1362252395}
@@ -346,7 +346,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: ba4f62e6e1f89f94fbabed104019c63b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ba4f62e6e1f89f94fbabed104019c63b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -386,7 +386,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 4c7c862c6720ded4ea401d69bdf20f13, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4c7c862c6720ded4ea401d69bdf20f13, type: 2}
       propertyPath: m_LocalPosition.y
@@ -431,6 +431,7 @@ GameObject:
   - 4: {fileID: 1244779172}
   - 212: {fileID: 1244779174}
   - 60: {fileID: 1244779173}
+  - 114: {fileID: 1244779175}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -457,7 +458,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1244779171}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Poly:
     m_Paths:
     - - {x: -.0917482525, y: .157353401}
@@ -487,6 +488,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 7780e3edc60afdd47a5b40d72896b7b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1244779175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244779171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb694edce99355f49bac3ef3734dcbc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: .400000006
 --- !u!1 &1362252390
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +560,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -563,7 +576,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362252390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -19, z: -10}
+  m_LocalPosition: {x: 0, y: -8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 714315620}
@@ -659,7 +672,7 @@ Transform:
   m_PrefabInternal: {fileID: 1164203197}
   m_GameObject: {fileID: 1710774067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

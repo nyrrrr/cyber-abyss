@@ -47,15 +47,17 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        // default values
         Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f;
+        Time.maximumDeltaTime = 0.3333333f;
+
         movementComponent = GetComponent<PlayerMovement>();
 
+        // slow-mo stuff
         slowTimeScale = Time.timeScale / slowFactor;
         slowFixedDelta = Time.fixedDeltaTime / slowFactor;
         slowMaxDelta = Time.maximumDeltaTime / slowFactor;
-
-		// Ade
-		Debug.Log ("CHANGED HERO'S GRAVITY FROM 1 TO 0.5");
     }
 
     // Update is called once per frame
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 		state = PlayerState.Dead;
+        movementComponent.enabled = false;
         Debug.Log("DON'T FORGET THE DEATH ANIMATION! ;)");
     }
 
@@ -102,10 +105,9 @@ public class Player : MonoBehaviour
     /// </summary>
     private void TestMethod()
     {
-
         // TODO remove later
 		count += Time.frameCount;
-        if (count % 120 == 0) GameObject.Instantiate(Resources.Load("CollidableDummy"), new Vector3(5, transform.position.y - 10, transform.position.z), Quaternion.Euler(Vector3.zero));
+        if (count % 180 == 0) GameObject.Instantiate(Resources.Load("DestroyableEnemyDummy"), new Vector3(5, transform.position.y - 10, transform.position.z), Quaternion.Euler(Vector3.zero));
     }
     #endregion
 }
