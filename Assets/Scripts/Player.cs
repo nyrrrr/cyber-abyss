@@ -21,13 +21,6 @@ public class Player : MonoBehaviour
     {
         get
         {
-            if (_singleton == null)
-            {
-                lock (_lock)
-                {
-                    if (_singleton == null) _singleton = new Player();
-                }
-            }
             return _singleton;
         }
     }
@@ -47,6 +40,8 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        _singleton = this;
+
         Time.timeScale = 1.0f;
         movementComponent = GetComponent<PlayerMovement>();
 
@@ -61,7 +56,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TestMethod();
+        //TestMethod();
 
         if (state == PlayerState.Dead)
         {

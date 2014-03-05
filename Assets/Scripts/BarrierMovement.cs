@@ -5,13 +5,12 @@ public class BarrierMovement : MonoBehaviour {
 
 	public bool _isLeft = true;
 	private bool _canMove = false;
-	private GameObject _player;
+	private Player _player;
 
 	// Use this for initialization
-	void Awake () {
-		// I will use GameObject for now xD
-		_player = GameObject.Find("Hero");
-	}
+    void Start() {
+        _player = Player.Instance;
+    }
 	
 	// Update is called once per frame
 	void Update () {
