@@ -5,12 +5,12 @@ public class BarrierMovement : MonoBehaviour {
 
 	public bool _isLeft = true;
 	private bool _canMove = false;
-	private Player _player;
+	private GameObject _player;
 
 	// Use this for initialization
 	void Awake () {
-		// I'm getting a NullReferenceError 
-		_player = Player.Instance;
+		// I will use GameObject for now xD
+		_player = GameObject.Find("Hero");
 	}
 	
 	// Update is called once per frame
