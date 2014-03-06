@@ -751,7 +751,6 @@ GameObject:
   - 4: {fileID: 823895929}
   - 212: {fileID: 823895928}
   - 61: {fileID: 823895931}
-  - 114: {fileID: 823895930}
   - 114: {fileID: 823895932}
   m_Layer: 0
   m_Name: DummyMasterBoss
@@ -790,26 +789,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 823895927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.49326873, y: -69.5030746, z: 0}
+  m_LocalPosition: {x: 1.01617146, y: -69.5659485, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1756782489}
   m_Father: {fileID: 0}
---- !u!114 &823895930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 823895927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12e84925a87640b47a07eb32a2d0c389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _idleTime: 1
-  _speed: 2
-  _followPlayer: 1
-  _masterBoss: 1
 --- !u!61 &823895931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -832,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b4071b91f4d4848802f13be40ea364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 2
 --- !u!1001 &1164203197
 Prefab:
   m_ObjectHideFlags: 0
