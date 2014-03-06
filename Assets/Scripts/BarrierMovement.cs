@@ -22,7 +22,7 @@ public class BarrierMovement : MonoBehaviour {
 	#region custom
 	private void _CheckPosition()
 	{
-		if(transform.position.y > _player.transform.position.y - 10)
+		if(transform.position.y > _player.transform.position.y - 6)
 		{
 			_canMove = true;
 		}

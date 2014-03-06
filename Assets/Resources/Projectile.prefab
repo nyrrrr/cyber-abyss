@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: CollidableDummyMoving
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.80535412, y: -3.3470974, z: 0}
+  m_LocalPosition: {x: 1.50322843, y: -68.0233917, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,7 +38,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .5, y: .5}
+  m_Size: {x: .300000012, y: .300000012}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -48,10 +48,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f68938b5903104c9d040ccd81e75f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d303802ac7dc3f43b6bd15937c43a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isLeft: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 50b3e4b7fbbff8144901c22ee94dc790, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d421620cd22d93947af50692f84c6224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

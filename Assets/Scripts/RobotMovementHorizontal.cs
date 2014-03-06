@@ -8,8 +8,11 @@ public class RobotMovementHorizontal : MonoBehaviour {
 	private bool _stopForever = false;
 	private float _moveToPlayer;
 
-	public int _speed = 0; // We use inspector. For level design
-	public bool _followPlayer = true;
+	// We use inspector. For level design
+	public int _idleTime = 1; // waiting time before going up val * 100
+	public int _speed = 2; // speed if it follows player
+	public bool _followPlayer = true; 
+	public bool _masterBoss = false;
 
 	// Use this for initialization
 	void Start () {
@@ -33,17 +36,7 @@ public class RobotMovementHorizontal : MonoBehaviour {
 				if(!_detectedPlayer)
 				{
 					_detectedPlayer = true;
-
-					// this is weird xD
-					float speed = 100; // milliseconds
-					if(_speed == 0)			speed = 0;
-					else if(_speed == 1) 	speed = 200;
-					else if(_speed == 2)	speed = 400;
-					else if(_speed == 3)	speed = 600;
-					else if(_speed == 4)	speed = 800;
-					else if(_speed == 5)	speed = 1000;
-
-					_moveToPlayer = (Time.time * 1000) + speed; 
+					_moveToPlayer = (Time.time * 1000) + (_idleTime * 100); 
 				}
 				
 			}
@@ -55,8 +48,8 @@ public class RobotMovementHorizontal : MonoBehaviour {
 		if(_detectedPlayer)
 		{
 
-			int _followX = -2;
-			if(transform.position.x < _player.transform.position.x) _followX = 2;
+			int _followX = -(_speed);
+			if(transform.position.x < _player.transform.position.x) _followX = _speed;
 
 			if(!_followPlayer)
 			{
@@ -64,12 +57,16 @@ public class RobotMovementHorizontal : MonoBehaviour {
 			}
 
 			transform.position = new Vector2(transform.position.x + (_followX * Time.deltaTime), _player.transform.position.y - 10);
-			
-			// I like to use Time x) sorry
-			if(_moveToPlayer < Time.time * 1000)
+
+
+			if(!_masterBoss)
 			{
-				_detectedPlayer = false;
-				_stopForever = true;
+				// I like to use Time x) sorry
+				if(_moveToPlayer < Time.time * 1000)
+				{
+					_detectedPlayer = false;
+					_stopForever = true;
+				}
 			}
 		}
 	}
