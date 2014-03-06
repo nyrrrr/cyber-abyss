@@ -7,12 +7,9 @@ public class Player : MonoBehaviour
 {
     private float slowFactor = 4f;
     private float slowTimeScale;
-    int count;
     PlayerMovement movementComponent;
 
-    #region singleton pattern
-    private static volatile Player _singleton = null;
-    private static object _lock = new object();
+    private static Player _singleton = null;
 
     static Player() { }
     private Player() { }
@@ -24,7 +21,6 @@ public class Player : MonoBehaviour
             return _singleton;
         }
     }
-    #endregion
 
     public enum PlayerState
     { // not sure about those three yet; want to use them instead of booleans
@@ -35,11 +31,12 @@ public class Player : MonoBehaviour
     PlayerState state;
     private float slowFixedDelta;
     private float slowMaxDelta;
-    
 
     // Use this for initialization
     void Awake()
     {
+        _singleton = this;
+
         // default values
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = 0.02f;
@@ -56,8 +53,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TestMethod();
-
         if (state == PlayerState.Dead)
         {
             if (Input.anyKeyDown)
@@ -72,7 +67,6 @@ public class Player : MonoBehaviour
     {
 		state = PlayerState.Dead;
         movementComponent.enabled = false;
-        Debug.Log("DON'T FORGET THE DEATH ANIMATION! ;)");
     }
 
     void OnGUI()
@@ -84,7 +78,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    #region custom
     public void SlowDown() {
         Time.timeScale = Mathf.Lerp(Time.deltaTime, slowTimeScale, Time.time);
         Time.fixedDeltaTime = slowFixedDelta;
@@ -92,16 +85,4 @@ public class Player : MonoBehaviour
 
         // TODO create analogue method for increasing speed back to normal
     }
-
-    /// <summary>
-    /// DON'T YOU DARE FORGET REMOVING ME!!!!
-	/// LOL! Now who's awesome at commenting?? haha! xD
-    /// </summary>
-    private void TestMethod()
-    {
-        // TODO remove later
-		count += Time.frameCount;
-        if (count % 180 == 0) GameObject.Instantiate(Resources.Load("DestroyableEnemyDummy"), new Vector3(5, transform.position.y - 10, transform.position.z), Quaternion.Euler(Vector3.zero));
-    }
-    #endregion
 }
