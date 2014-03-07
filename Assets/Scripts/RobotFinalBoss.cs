@@ -7,9 +7,22 @@ public class RobotFinalBoss : MonoBehaviour {
 	private Player _player;
 
 	private Transform _spawn;
-	private GameObject _projectilePrefab, _projectileObject;
+	private GameObject _projectilePrefab, _projectilePrefabSuper, _projectileObject;
 	private float _idleTime;
 	private bool _isShooting = false;
+
+	private static RobotFinalBoss _singleton = null;
+	
+	static RobotFinalBoss() { }
+	private RobotFinalBoss() { }
+	
+	public static RobotFinalBoss Instance
+	{
+		get
+		{
+			return _singleton;
+		}
+	}
 
 
 	//
@@ -21,8 +34,13 @@ public class RobotFinalBoss : MonoBehaviour {
 	
 	
 	// We use inspector. For level design
-	public int _speed = 2; // speed if it follows player
+	public int _speed = 100;
 
+
+	void Awake()
+	{
+		_singleton = this;
+	}
 
 	// Use this for initialization
 	void Start () 
@@ -31,9 +49,13 @@ public class RobotFinalBoss : MonoBehaviour {
 		_player = Player.Instance;
 
 		_projectilePrefab = Resources.Load("Projectile") as GameObject;
+		_projectilePrefabSuper = Resources.Load("SuperProjectile") as GameObject;
 		_spawn = transform.FindChild("BossProjectile");
 
 	}
+
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -74,7 +96,15 @@ public class RobotFinalBoss : MonoBehaviour {
 			{
 				if(_idleTime < Time.time * 1000)
 				{
-					_projectileObject = GameObject.Instantiate(_projectilePrefab, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
+					if(Random.Range(0,5) > 2)
+					{
+						_projectileObject = GameObject.Instantiate(_projectilePrefab, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
+					}
+					else 
+					{
+						_projectileObject = GameObject.Instantiate(_projectilePrefabSuper, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
+					}
+
 					_isShooting = false;
 				}
 

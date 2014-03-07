@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Sword : MonoBehaviour {
     private bool isBlocked = false;
-    public float delay = 0.4f;
+    public float delay = 0.1f;
 
 	// Use this for initialization
 	void Awake () {
@@ -39,9 +39,14 @@ public class Sword : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Destroyable"))
-        {
-            Destroy(col.gameObject);
-        }
+		if (col.gameObject.layer == LayerMask.NameToLayer("Destroyable"))
+		{
+			Destroy(col.gameObject);
+		}
+
+		if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+		{
+			col.gameObject.GetComponent<BossProjectile>().MoveDown();
+		}
     }
 }

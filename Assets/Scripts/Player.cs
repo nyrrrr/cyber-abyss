@@ -61,13 +61,30 @@ public class Player : MonoBehaviour
             }
             SlowDown();
         }
+
+		// max velocity
+		if(rigidbody2D.velocity.y <= -20)
+		{
+			rigidbody2D.velocity = new Vector2(0, -20);
+		}
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		state = PlayerState.Dead;
-        movementComponent.enabled = false;
+
+
+		if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+		{
+			if(!col.gameObject.GetComponent<BossProjectile>()._moveDown)
+			{
+				Destroy(col.gameObject);
+			}
+		} else if (col.gameObject.layer != LayerMask.NameToLayer("Projectile")) {
+			state = PlayerState.Dead;
+			movementComponent.enabled = false;
+		}
     }
+
 
     void OnGUI()
     {
