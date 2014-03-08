@@ -10,10 +10,10 @@ public class MainCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_player = Player.Instance;
-		_masterBoss = RobotFinalBoss.Instance;
+        //_masterBoss = RobotFinalBoss.Instance;
 
 		// We will just take the floor's gameobject. We don't need to code the Insatance. If it's okay
-		_floor = GameObject.Find ("Floor");
+        //_floor = GameObject.Find ("Floor"); // sure it is. we don't need to use that singleton pattern per se.
 	}
 	
 	// Update is called once per frame

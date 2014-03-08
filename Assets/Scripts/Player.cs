@@ -62,35 +62,35 @@ public class Player : MonoBehaviour
             SlowDown();
         }
 
-		// max velocity
-		if(rigidbody2D.velocity.y <= -30)
-		{
-			rigidbody2D.velocity = new Vector2(0, -30);
-		}
+        // max velocity
+        if (rigidbody2D.velocity.y <= -30)
+        {
+            rigidbody2D.velocity = new Vector2(0, -30);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		state = PlayerState.Dead;
-		movementComponent.enabled = false;
+        state = PlayerState.Dead;
+        movementComponent.enabled = false;
     }
 
-	void OnTriggerEnter2D (Collider2D col)
-	{
-		state = PlayerState.Dead;
-		movementComponent.enabled = false;
-		
-		if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
-		{
-			if(!col.gameObject.GetComponent<BossProjectile>()._moveDown)
-			{
-				Destroy(col.gameObject);
-			}
-		}
-	}
-		
-		
-		void OnGUI()
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        state = PlayerState.Dead;
+        movementComponent.enabled = false;
+
+        if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        {
+            if (!col.gameObject.GetComponent<BossProjectile>()._moveDown)
+            {
+                Destroy(col.gameObject);
+            }
+        }
+    }
+
+
+    void OnGUI()
     {
         if (state == PlayerState.Dead)
         {
@@ -99,12 +99,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SlowDown() 
-	{
+    public void SlowDown()
+    {
         Time.timeScale = Mathf.Lerp(Time.deltaTime, slowTimeScale, Time.time);
         Time.fixedDeltaTime = slowFixedDelta;
-        Time.maximumDeltaTime = slowMaxDelta;  
-
-        // TODO create analogue method for increasing speed back to normal
+        Time.maximumDeltaTime = slowMaxDelta;
     }
 }
