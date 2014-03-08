@@ -19,11 +19,11 @@ public class SideScript : MonoBehaviour {
 	void Update () {
 		//
 
-		if(transform.position.y > _player.transform.position.y + 3 && _canCreate)
+		if(transform.position.y > _player.transform.position.y + 3.5f && _canCreate)
 		{
 			if(_canCreate)
 			{
-				_sidePrefabObject = GameObject.Instantiate(_sidePrefab, new Vector2(0, _player.transform.position.y - 20), Quaternion.Euler(Vector2.zero)) as GameObject;
+				_sidePrefabObject = GameObject.Instantiate(_sidePrefab, new Vector2(0, _player.transform.position.y - 21f), Quaternion.Euler(Vector2.zero)) as GameObject;
 				_canCreate = false;
 			}
 		}

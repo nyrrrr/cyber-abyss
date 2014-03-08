@@ -30,6 +30,7 @@ public class RobotFinalBoss : MonoBehaviour {
 
 	private Transform _spawn;
 	private GameObject _projectilePrefab, _projectilePrefabSuper, _projectileObject;
+	private GameObject _floorPrefab, _floorPrefabObject;
 	private float _idleTime;
 	private bool _isShooting = false;
 
@@ -48,6 +49,9 @@ public class RobotFinalBoss : MonoBehaviour {
 		_projectilePrefab = Resources.Load("Projectile") as GameObject;
 		_projectilePrefabSuper = Resources.Load("SuperProjectile") as GameObject;
 		_spawn = transform.FindChild("BossProjectile");
+
+		// floor
+		_floorPrefab = Resources.Load("Floor") as GameObject;
 	}
 
 	// Use this for initialization
@@ -68,15 +72,19 @@ public class RobotFinalBoss : MonoBehaviour {
 		// life
 		if(_life <= 0)
 		{
+			// set wall
+			_floorPrefabObject = GameObject.Instantiate(_floorPrefab, new Vector2(0, transform.position.y - 10), Quaternion.Euler(Vector2.zero)) as GameObject;
 			Destroy(gameObject);
 		}
+
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
 	}
 	
 	
 	#region custom
 	private void _CheckPlayer()
 	{
-		if(transform.position.y > _player.transform.position.y - 10)
+		if(transform.position.y > _player.transform.position.y - 15)
 		{
 			if(!_detectedPlayer)
 			{
