@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
+		state = PlayerState.Dead;
+		movementComponent.enabled = false;
 
 		if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
 		{
@@ -79,10 +81,8 @@ public class Player : MonoBehaviour
 			{
 				Destroy(col.gameObject);
 			}
-		} else if (col.gameObject.layer != LayerMask.NameToLayer("Projectile")) {
-			state = PlayerState.Dead;
-			movementComponent.enabled = false;
 		}
+
     }
 
 
@@ -95,7 +95,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SlowDown() {
+    public void SlowDown() 
+	{
         Time.timeScale = Mathf.Lerp(Time.deltaTime, slowTimeScale, Time.time);
         Time.fixedDeltaTime = slowFixedDelta;
         Time.maximumDeltaTime = slowMaxDelta;  

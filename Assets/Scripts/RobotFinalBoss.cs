@@ -3,13 +3,6 @@ using System.Collections;
 
 public class RobotFinalBoss : MonoBehaviour {
 
-	private BossProjectile _projectile;
-	private Player _player;
-
-	private Transform _spawn;
-	private GameObject _projectilePrefab, _projectilePrefabSuper, _projectileObject;
-	private float _idleTime;
-	private bool _isShooting = false;
 
 	private static RobotFinalBoss _singleton = null;
 	
@@ -29,28 +22,38 @@ public class RobotFinalBoss : MonoBehaviour {
 	// ;____; sorry, have to copy the one on horizontalmovement.cs rather than using that. >____<
 	// It's giving me weird behavior and I don't want to lengthen the codes on that one
 	//
+	private BossProjectile _projectile;
+	private Player _player;
+
 	private bool _detectedPlayer = false;
 	private float _moveToPlayer;
-	
+
+	private Transform _spawn;
+	private GameObject _projectilePrefab, _projectilePrefabSuper, _projectileObject;
+	private float _idleTime;
+	private bool _isShooting = false;
+
 	
 	// We use inspector. For level design
-	public int _speed = 100;
-
+	public int _speed = 1;
+	public int _life = 5;
 
 	void Awake()
 	{
 		_singleton = this;
+
+		_projectile = BossProjectile.Instance;
+		_player = Player.Instance;
+		
+		_projectilePrefab = Resources.Load("Projectile") as GameObject;
+		_projectilePrefabSuper = Resources.Load("SuperProjectile") as GameObject;
+		_spawn = transform.FindChild("BossProjectile");
 	}
 
 	// Use this for initialization
 	void Start () 
 	{
-		_projectile = BossProjectile.Instance;
-		_player = Player.Instance;
 
-		_projectilePrefab = Resources.Load("Projectile") as GameObject;
-		_projectilePrefabSuper = Resources.Load("SuperProjectile") as GameObject;
-		_spawn = transform.FindChild("BossProjectile");
 
 	}
 
@@ -61,6 +64,12 @@ public class RobotFinalBoss : MonoBehaviour {
 	void Update () {
 		_CheckPlayer ();
 		_CanMove ();
+
+		// life
+		if(_life <= 0)
+		{
+			Destroy(gameObject);
+		}
 	}
 	
 	
@@ -96,7 +105,7 @@ public class RobotFinalBoss : MonoBehaviour {
 			{
 				if(_idleTime < Time.time * 1000)
 				{
-					if(Random.Range(0,5) > 2)
+					if(Random.Range(0,5) > 1)
 					{
 						_projectileObject = GameObject.Instantiate(_projectilePrefab, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
 					}

@@ -28,12 +28,13 @@ public class BossProjectile : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		_singleton = this;
+		_player = Player.Instance;
+		_masterBoss = RobotFinalBoss.Instance;
 	}
 
 	void Start()
 	{
-		_player = Player.Instance;
-		_masterBoss = RobotFinalBoss.Instance;
+
 
 		if(_isSuper)
 		{
@@ -42,15 +43,14 @@ public class BossProjectile : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter2D(Collider2D col)
+	void OnCollisionEnter2D(Collision2D col)
 	{
-
+		
 		if (col.gameObject.layer == LayerMask.NameToLayer("Boss"))
 		{
-			print ("boss");
-		} else 
-		{
-			print ("asd");
+			col.gameObject.GetComponent<RobotFinalBoss>()._life--;
+			print (col.gameObject.GetComponent<RobotFinalBoss>()._life);
+			Destroy(gameObject);
 		}
 	}
 
@@ -69,8 +69,8 @@ public class BossProjectile : MonoBehaviour {
 		{
 			if(_moveDown)
 			{
-				_ypos -= 20 * Time.deltaTime;
-				transform.position = new Vector2(_player.transform.position.x, _player.transform.position.y - 10);
+				_ypos -= 40 * Time.deltaTime;
+				transform.position = new Vector2(transform.position.x, (_player.transform.position.y - 3) + _ypos);
 			}
 		}
 	}
@@ -80,6 +80,7 @@ public class BossProjectile : MonoBehaviour {
 	{
 		_moveDown = true;
 		_ypos = 0;
+		transform.position = new Vector2 (transform.position.x, _player.transform.position.y - 3);
 	}
 
 }
