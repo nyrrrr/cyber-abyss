@@ -16,7 +16,7 @@ public class RobotMovementHorizontal : MonoBehaviour
     public bool _masterBoss = false;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         _player = Player.Instance;
     }

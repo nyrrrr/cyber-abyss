@@ -8,15 +8,11 @@ public class SideScript : MonoBehaviour
     private GameObject _sidePrefab, _sidePrefabObject;
     private bool _canCreate = true;
 
-    void Awake()
-    {
-        _player = Player.Instance;
-        _sidePrefab = Resources.Load("SideObject") as GameObject;
-    }
-
     // Use this for initialization
     void Start()
     {
+        _player = Player.Instance;
+        _sidePrefab = Resources.Load("SideObject") as GameObject;
         transform.position = new Vector3(0, _player.transform.position.y - 20, 10);
     }
 
