@@ -18,6 +18,15 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
 
-        if (horizontal != 0) transform.position = new Vector2(transform.position.x + horizontal * Time.deltaTime * 5f, transform.position.y);
+        if (horizontal != 0) 
+		{
+			// prevent over lapping
+			float xpos = transform.position.x + horizontal * Time.deltaTime * 5f;
+
+			if(xpos < -3) xpos = -3;
+			else if(xpos > 3) xpos = 3;
+
+			transform.position = new Vector2(xpos, transform.position.y);
+		}
     }
 }
