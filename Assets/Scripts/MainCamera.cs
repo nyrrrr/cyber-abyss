@@ -19,7 +19,10 @@ public class MainCamera : MonoBehaviour {
 	void Update () {
 		transform.position = new Vector3 (0, _player.transform.position.y - _setPosition, _zLayer);
 
-		horizontal = Input.GetAxis("Horizontal") * 1.5f;
-		transform.rotation = Quaternion.Euler(0, 0, horizontal);
+		if(_player.GetComponent<Player>().state != Player.PlayerState.End && _player.GetComponent<Player>().state != Player.PlayerState.Dead)
+		{
+			horizontal = Input.GetAxis("Horizontal") * 1.5f;
+			transform.rotation = Quaternion.Euler(0, 0, horizontal);
+		}
 	}
 }

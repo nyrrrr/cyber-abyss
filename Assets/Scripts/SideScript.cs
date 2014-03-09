@@ -24,12 +24,12 @@ public class SideScript : MonoBehaviour
         {
             if (_canCreate)
             {
-                _sidePrefabObject = GameObject.Instantiate(_sidePrefab, new Vector2(0, _player.transform.position.y - 21f), Quaternion.Euler(Vector2.zero)) as GameObject;
+                _sidePrefabObject = GameObject.Instantiate(_sidePrefab, new Vector2(0, _player.transform.position.y - 20f), Quaternion.Euler(Vector2.zero)) as GameObject;
                 _canCreate = false;
             }
         }
 
-        if (transform.position.y > 36 && !_canCreate)
+        if (transform.position.y > 35 && !_canCreate)
         {
             Destroy(gameObject);
         }
