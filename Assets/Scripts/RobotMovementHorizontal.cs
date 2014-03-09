@@ -12,6 +12,7 @@ public class RobotMovementHorizontal : MonoBehaviour
     // We use inspector. For level design
     public int _idleTime = 1; // waiting time before going up val * 100
     public int _speed = 2; // speed if it follows player
+	public float _length = 10;
     public bool _followPlayer = true;
     public bool _masterBoss = false;
 
@@ -33,7 +34,7 @@ public class RobotMovementHorizontal : MonoBehaviour
     {
         if (!_stopForever)
         {
-            if (transform.position.y > _player.transform.position.y - 10)
+			if (transform.position.y > _player.transform.position.y - _length)
             {
                 if (!_detectedPlayer)
                 {
@@ -58,7 +59,7 @@ public class RobotMovementHorizontal : MonoBehaviour
                 _followX = 0;
             }
 
-            transform.position = new Vector2(transform.position.x + (_followX * Time.deltaTime), _player.transform.position.y - 10);
+			transform.position = new Vector2(transform.position.x + (_followX * Time.deltaTime), _player.transform.position.y - _length);
 
 
             if (!_masterBoss)
