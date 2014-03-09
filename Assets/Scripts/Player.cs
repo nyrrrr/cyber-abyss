@@ -27,8 +27,9 @@ public class Player : MonoBehaviour
         Attacking,
         Falling,
         Dead,
+		End,
     }
-    PlayerState state;
+    public PlayerState state;
     private float slowFixedDelta;
     private float slowMaxDelta;
 
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == PlayerState.Dead)
+		if (state == PlayerState.Dead || state == PlayerState.End)
         {
             if (Input.anyKeyDown)
             {
@@ -73,6 +74,12 @@ public class Player : MonoBehaviour
     {
         state = PlayerState.Dead;
         movementComponent.enabled = false;
+
+		print (col.transform.name);
+		if(col.transform.name == "Floor")
+		{
+			state = PlayerState.End;
+		}
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -92,11 +99,16 @@ public class Player : MonoBehaviour
 
     void OnGUI()
     {
-        if (state == PlayerState.Dead)
-        {
-            GUI.Label(new Rect((Screen.width / 2) - 20, (Screen.height / 2) - 10, 40, 20), "DEAD!");
-            GUI.Label(new Rect((Screen.width / 2) - 60, (Screen.height / 2) + 10, 240, 20), "Any key for restart!");
-        }
+		if (state == PlayerState.Dead)
+		{
+			GUI.Label(new Rect((Screen.width / 2) - 20, (Screen.height / 2) - 10, 40, 20), "DEAD!");
+			GUI.Label(new Rect((Screen.width / 2) - 60, (Screen.height / 2) + 10, 240, 20), "Any key for restart!");
+		}
+		else if (state == PlayerState.End)
+		{
+			GUI.Label(new Rect((Screen.width / 2) - 20, (Screen.height / 2) - 10, 40, 20), "YAY!");
+			GUI.Label(new Rect((Screen.width / 2) - 60, (Screen.height / 2) + 10, 240, 20), "Now what? :O");
+		}
     }
 
     public void SlowDown()

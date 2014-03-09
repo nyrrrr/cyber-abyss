@@ -4,21 +4,22 @@ using System.Collections;
 public class MainCamera : MonoBehaviour {
 
 	private Player _player;
-	private RobotFinalBoss _masterBoss;
-	private GameObject _floor; 
+
+	private float _setPosition = 5;
+	private float _zLayer = -10;
+
+	public float horizontal;
 
 	// Use this for initialization
 	void Start () {
 		_player = Player.Instance;
-        //_masterBoss = RobotFinalBoss.Instance;
-
-		// We will just take the floor's gameobject. We don't need to code the Insatance. If it's okay
-        //_floor = GameObject.Find ("Floor"); // sure it is. we don't need to use that singleton pattern per se.
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = new Vector3 (0, _player.transform.position.y - 5, -10);
+		transform.position = new Vector3 (0, _player.transform.position.y - _setPosition, _zLayer);
 
+		horizontal = Input.GetAxis("Horizontal") * 1.5f;
+		transform.rotation = Quaternion.Euler(0, 0, horizontal);
 	}
 }

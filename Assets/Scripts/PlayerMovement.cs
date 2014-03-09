@@ -5,18 +5,42 @@ using System.Collections;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    float horizontal;
+    float horizontal, horizontalRaw;
+
+	// sprites
+	private Sprite[] faceSprite;
+
+	void Awake ()
+	{
+		faceSprite = Resources.LoadAll<Sprite> ("Textures/hero");
+		print (faceSprite.Length);
+	}
 
     // Use this for initialization
     void Start()
     {
         horizontal = 0;
+		horizontalRaw = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
+		horizontal = Input.GetAxis("Horizontal");
+		horizontalRaw = Input.GetAxisRaw("Horizontal");
+
+		if(horizontalRaw == 1)
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[2];
+		}
+		else if(horizontalRaw == -1)
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[0];
+		}
+		else
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[1];
+		}
 
         if (horizontal != 0) 
 		{
@@ -28,5 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
 			transform.position = new Vector2(xpos, transform.position.y);
 		}
+
+
     }
 }

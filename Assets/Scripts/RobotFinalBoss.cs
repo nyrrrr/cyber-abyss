@@ -61,11 +61,13 @@ public class RobotFinalBoss : MonoBehaviour
         _CheckPlayer();
         _CanMove();
 
+
         // life
         if (_life <= 0)
         {
             // set wall
-            _floorPrefabObject = GameObject.Instantiate(_floorPrefab, new Vector2(0, transform.position.y - 10), Quaternion.Euler(Vector2.zero)) as GameObject;
+            _floorPrefabObject = GameObject.Instantiate(_floorPrefab, new Vector2(0, transform.position.y - 20), Quaternion.Euler(Vector2.zero)) as GameObject;
+			_floorPrefabObject.transform.name = "Floor";
             Destroy(gameObject);
         }
 
@@ -82,6 +84,8 @@ public class RobotFinalBoss : MonoBehaviour
                 _detectedPlayer = true;
             }
         }
+
+
     }
 
     private void _CanMove()
@@ -100,24 +104,26 @@ public class RobotFinalBoss : MonoBehaviour
                 }
             }
 
+
             if (_isShooting)
             {
-                if (_idleTime < Time.time * 1000)
-                {
-                    if (Random.Range(0, 5) > 1)
-                    {
-                        _projectileObject = GameObject.Instantiate(_projectilePrefab, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
-                    }
-                    else
-                    {
-                        _projectileObject = GameObject.Instantiate(_projectilePrefabSuper, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
-                    }
+				if(_player.GetComponent<Player>().state != Player.PlayerState.Dead){
+	                if (_idleTime < Time.time * 1000)
+	                {
+	                    if (Random.Range(0, 5) > 1)
+	                    {
+	                        _projectileObject = GameObject.Instantiate(_projectilePrefab, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
+	                    }
+	                    else
+	                    {
+	                        _projectileObject = GameObject.Instantiate(_projectilePrefabSuper, _spawn.position, Quaternion.Euler(Vector2.zero)) as GameObject;
+	                    }
 
-                    _isShooting = false;
-                }
-
-                _followX = 0;
-            }
+	                    _isShooting = false;
+	                }
+				}
+				_followX = 0;
+			}
 
             transform.position = new Vector2(transform.position.x + (_followX * Time.deltaTime), _player.transform.position.y - 10);
         }

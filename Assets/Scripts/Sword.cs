@@ -4,7 +4,7 @@ using System.Collections;
 public class Sword : MonoBehaviour
 {
     private bool isBlocked = false;
-    public float delay = 0.1f;
+    public float delay = 5f;
 
     // Use this for initialization
     void Awake()
