@@ -62,6 +62,11 @@ public class Player : MonoBehaviour
             }
             SlowDown();
         }
+		else 
+		{
+			// to prevent rotation
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
 
         // max velocity
         if (rigidbody2D.velocity.y <= -30)

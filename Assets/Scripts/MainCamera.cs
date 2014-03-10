@@ -21,7 +21,7 @@ public class MainCamera : MonoBehaviour {
 
 		if(_player.GetComponent<Player>().state != Player.PlayerState.End && _player.GetComponent<Player>().state != Player.PlayerState.Dead)
 		{
-			horizontal = Input.GetAxis("Horizontal") * 2f;
+			horizontal = Input.GetAxis("Horizontal") * 1.5f;
 			transform.rotation = Quaternion.Euler(0, 0, horizontal);
 		}
 	}
