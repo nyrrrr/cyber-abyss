@@ -70,8 +70,6 @@ public class RobotFinalBoss : MonoBehaviour
 			_floorPrefabObject.transform.name = "Floor";
             Destroy(gameObject);
         }
-
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     #region custom

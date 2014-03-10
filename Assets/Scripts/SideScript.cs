@@ -29,7 +29,7 @@ public class SideScript : MonoBehaviour
             }
         }
 
-        if (transform.position.y > 35 && !_canCreate)
+        if (transform.position.y > 20 && !_canCreate)
         {
             Destroy(gameObject);
         }

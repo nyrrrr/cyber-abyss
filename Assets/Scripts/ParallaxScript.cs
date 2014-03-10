@@ -13,7 +13,7 @@ public class ParallaxScript : MonoBehaviour {
 	private float horizontal;
 
 	// BG: Uber fancy parallax x)
-	private Transform bg0, bg1, bg2,bg3;
+	private Transform bg0, bg1, bg2,bg3, moon;
 
 	
 	// Use this for initialization
@@ -24,13 +24,14 @@ public class ParallaxScript : MonoBehaviour {
 		bg1 = transform.FindChild ("bg1");
 		bg2 = transform.FindChild ("bg2");
 		bg3 = transform.FindChild ("bg3");
+		moon = transform.FindChild ("moon");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 
-		if(_player.GetComponent<Player>().state != Player.PlayerState.End)
+		if(_player.GetComponent<Player>().state != Player.PlayerState.End && _player.rigidbody2D.velocity.y < 0)
 		{
 			_moveSlight += 0.3f * Time.deltaTime;
 			if(_moveSlight >= 14)
@@ -40,6 +41,8 @@ public class ParallaxScript : MonoBehaviour {
 
 
 			transform.position = new Vector3 (0, _player.transform.position.y - _setPosition + _moveSlight, _zLayer);
+			horizontal = Input.GetAxis("Horizontal") * 0.6f;
+			moon.position = new Vector3 (0.1f - horizontal, _player.transform.position.y + 2, _zLayer + 20);
 			horizontal = Input.GetAxis("Horizontal") * 0.4f;
 			bg0.position = new Vector3 (0 - horizontal, _player.transform.position.y - _setPosition + _moveSlight - 1, _zLayer + 20);
 			horizontal = Input.GetAxis("Horizontal") * 0.3f;
