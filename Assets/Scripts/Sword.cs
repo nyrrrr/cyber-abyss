@@ -7,12 +7,16 @@ public class Sword : MonoBehaviour
     public float delay = 5f;
 
 	private Player _player;
+	private GameObject _swoosh;
 
     // Use this for initialization
     void Awake()
     {
         this.collider2D.enabled = false;
         renderer.enabled = false;
+
+		_swoosh = GameObject.Find ("Swoosh");
+		_swoosh.renderer.enabled = false;
     }
 
 	void Start()
@@ -29,6 +33,10 @@ public class Sword : MonoBehaviour
 	        {
 	            StartCoroutine(SwordSwing());
 	        }
+		} 
+		else 
+		{
+			_swoosh.renderer.enabled = false;
 		}
     }
     /// <summary>
@@ -38,6 +46,7 @@ public class Sword : MonoBehaviour
     /// <returns></returns>
     private IEnumerator SwordSwing()
     {
+		_swoosh.renderer.enabled = true;
         collider2D.enabled = true;
         isBlocked = true;
         renderer.enabled = true;
@@ -47,6 +56,7 @@ public class Sword : MonoBehaviour
         collider2D.enabled = false;
         isBlocked = false;
         renderer.enabled = false;
+		_swoosh.renderer.enabled = false;
         yield return null;
     }
 
