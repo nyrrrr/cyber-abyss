@@ -48,29 +48,56 @@ TextureImporter:
     - name: hero_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
         width: 14
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: hero_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 0
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
     - name: hero_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 66
         y: 0
         width: 14
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+    - name: hero_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hero_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hero_5
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 32
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
