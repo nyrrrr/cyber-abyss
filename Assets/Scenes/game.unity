@@ -6151,24 +6151,23 @@ CircleCollider2D:
 --- !u!82 &714315628
 AudioSource:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200002, guid: 75707d94ae7bd1243873b849df2c52ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 1326114764}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714315618}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 6ccf5136b2cd3ec49bd50ed2cad7f4d6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -10431,7 +10430,9 @@ Prefab:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8200002, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+    - {fileID: 8100000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
   m_RootGameObject: {fileID: 714315618}
   m_IsPrefabParent: 0
@@ -10954,7 +10955,6 @@ GameObject:
   - 20: {fileID: 1362252394}
   - 92: {fileID: 1362252393}
   - 124: {fileID: 1362252392}
-  - 81: {fileID: 1362252391}
   - 114: {fileID: 1362252396}
   m_Layer: 0
   m_Name: Main Camera
@@ -10963,14 +10963,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1362252391
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8100000, guid: 75707d94ae7bd1243873b849df2c52ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 1326114764}
-  m_GameObject: {fileID: 1362252390}
-  m_Enabled: 1
 --- !u!124 &1362252392
 Behaviour:
   m_ObjectHideFlags: 0
