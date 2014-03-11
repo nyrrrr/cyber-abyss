@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 	{
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		faceSprite = Resources.LoadAll<Sprite> ("Textures/hero");
-		print (faceSprite.Length);
 	}
 
     // Use this for initialization

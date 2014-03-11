@@ -109,6 +109,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8100000, guid: 2a430feab3aee3346b6a2dec66d1e52e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a430feab3aee3346b6a2dec66d1e52e, type: 2}
   m_RootGameObject: {fileID: 1797154207}
@@ -125,7 +129,6 @@ GameObject:
   - 20: {fileID: 1658629459}
   - 92: {fileID: 1658629458}
   - 124: {fileID: 1658629457}
-  - 81: {fileID: 1658629456}
   - 114: {fileID: 1658629461}
   m_Layer: 0
   m_Name: Main Camera
@@ -134,13 +137,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1658629456
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1658629455}
-  m_Enabled: 1
 --- !u!124 &1658629457
 Behaviour:
   m_ObjectHideFlags: 0
