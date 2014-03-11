@@ -10383,6 +10383,7 @@ GameObject:
   - 4: {fileID: 1337886962}
   - 212: {fileID: 1337886961}
   - 95: {fileID: 1337886960}
+  - 61: {fileID: 1337886963}
   m_Layer: 0
   m_Name: Caution
   m_TagString: Untagged
@@ -10440,6 +10441,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7370705}
+--- !u!61 &1337886963
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1337886959}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 2.5, y: 1.5}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1339123010
 GameObject:
   m_ObjectHideFlags: 0
