@@ -7,7 +7,6 @@ public class Sword : MonoBehaviour
     public float delay = 5f;
 
 	private Player _player;
-	private GameObject _swoosh;
 
 	// sounds
 	public AudioClip sfx_swoosh;
@@ -18,10 +17,6 @@ public class Sword : MonoBehaviour
     {
         this.collider2D.enabled = false;
         renderer.enabled = false;
-
-
-		_swoosh = GameObject.Find ("Swoosh");
-		_swoosh.renderer.enabled = false;
     }
 
 	void Start()
@@ -40,10 +35,6 @@ public class Sword : MonoBehaviour
 	            StartCoroutine(SwordSwing());
 	        }
 		} 
-		else 
-		{
-			_swoosh.renderer.enabled = false;
-		}
     }
     /// <summary>
     /// sword swing with delay, so user can't simply keep the button pressed or press like a maniac
@@ -53,7 +44,6 @@ public class Sword : MonoBehaviour
     private IEnumerator SwordSwing()
 	{
 		audio.PlayOneShot (sfx_swoosh);
-		_swoosh.renderer.enabled = true;
         collider2D.enabled = true;
         isBlocked = true;
         renderer.enabled = true;
@@ -63,7 +53,6 @@ public class Sword : MonoBehaviour
         collider2D.enabled = false;
         isBlocked = false;
         renderer.enabled = false;
-		_swoosh.renderer.enabled = false;
         yield return null;
     }
 
