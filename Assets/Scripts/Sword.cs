@@ -12,7 +12,7 @@ public class Sword : MonoBehaviour
 	// Sprites
 	private Sprite[] swordSprite;
 	private SpriteRenderer _spriteRenderer;
-	private float _animTime, _anim = 80;
+	private float _animTime, _anim = 50;
 	private int _animctr = 0;
 	
 	// sounds
@@ -58,6 +58,10 @@ public class Sword : MonoBehaviour
 			{
 				_animTime = (Time.time * 1000) + _anim;
 				_animctr++;
+				if(_animctr > 2)
+				{
+					_animctr = 2;
+				}
 			}
 			_spriteRenderer.sprite = swordSprite[_animctr];
 		}
