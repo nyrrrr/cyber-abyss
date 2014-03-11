@@ -19,10 +19,10 @@ public class MainCamera : MonoBehaviour {
 	void Update () {
 		transform.position = new Vector3 (0, _player.transform.position.y - _setPosition, _zLayer);
 
-		if(_player.GetComponent<Player>().state != Player.PlayerState.End && _player.GetComponent<Player>().state != Player.PlayerState.Dead)
+		if(_player.state != Player.PlayerState.End && _player.state != Player.PlayerState.Dead)
 		{
 			horizontal = Input.GetAxis("Horizontal") * 1.5f;
-			transform.rotation = Quaternion.Euler(0, 0, horizontal);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, horizontal, Time.time / 4f)); 
 		}
 	}
 }

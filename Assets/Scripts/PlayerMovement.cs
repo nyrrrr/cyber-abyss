@@ -9,9 +9,11 @@ public class PlayerMovement : MonoBehaviour
 
 	// sprites
 	private Sprite[] faceSprite;
+    private SpriteRenderer _spriteRenderer;
 
 	void Awake ()
 	{
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		faceSprite = Resources.LoadAll<Sprite> ("Textures/hero");
 		print (faceSprite.Length);
 	}
@@ -31,15 +33,15 @@ public class PlayerMovement : MonoBehaviour
 
 		if(horizontalRaw == 1)
 		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[2];
+            _spriteRenderer.sprite = faceSprite[2];
 		}
 		else if(horizontalRaw == -1)
 		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[0];
+            _spriteRenderer.sprite = faceSprite[0];
 		}
 		else
 		{
-			gameObject.GetComponent<SpriteRenderer>().sprite = faceSprite[1];
+            _spriteRenderer.sprite = faceSprite[1];
 		}
 
         if (horizontal != 0) 

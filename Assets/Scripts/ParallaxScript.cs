@@ -42,15 +42,15 @@ public class ParallaxScript : MonoBehaviour {
 
 			transform.position = new Vector3 (0, _player.transform.position.y - _setPosition + _moveSlight, _zLayer);
 			horizontal = Input.GetAxis("Horizontal") * 0.6f;
-			moon.position = new Vector3 (0.1f - horizontal, _player.transform.position.y + 2, _zLayer + 20);
+			moon.position = new Vector3 (Mathf.Lerp(moon.position.x, 0.1f - horizontal, Time.deltaTime), _player.transform.position.y + 2, _zLayer + 20);
 			horizontal = Input.GetAxis("Horizontal") * 0.4f;
-			bg0.position = new Vector3 (0 - horizontal, _player.transform.position.y - _setPosition + _moveSlight - 1, _zLayer + 20);
+            bg0.position = new Vector3(Mathf.Lerp(bg0.position.x, 0f - horizontal, Time.deltaTime), _player.transform.position.y - _setPosition + _moveSlight - 1, _zLayer + 20);
 			horizontal = Input.GetAxis("Horizontal") * 0.3f;
-			bg1.position = new Vector3 (0 - horizontal, _player.transform.position.y - _setPosition + _moveSlight - 2, _zLayer + 19);
+            bg1.position = new Vector3(Mathf.Lerp(bg1.position.x, 0f - horizontal, Time.deltaTime), _player.transform.position.y - _setPosition + _moveSlight - 2, _zLayer + 19);
 			horizontal = Input.GetAxis("Horizontal") * 0.2f;
-			bg2.position = new Vector3 (0 - horizontal, _player.transform.position.y - _setPosition + _moveSlight - 3, _zLayer + 18);
+            bg2.position = new Vector3(Mathf.Lerp(bg2.position.x, 0f - horizontal, Time.deltaTime), _player.transform.position.y - _setPosition + _moveSlight - 3, _zLayer + 18);
 			horizontal = Input.GetAxis("Horizontal") * 0.1f;
-			bg3.position = new Vector3 (0 - horizontal, _player.transform.position.y - _setPosition + _moveSlight - 4, _zLayer + 17);
+            bg3.position = new Vector3(Mathf.Lerp(bg3.position.x, 0f - horizontal, Time.deltaTime), _player.transform.position.y - _setPosition + _moveSlight - 4, _zLayer + 17);
 		}
 	}
 }
