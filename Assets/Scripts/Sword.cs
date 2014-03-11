@@ -26,7 +26,6 @@ public class Sword : MonoBehaviour
 
 		_spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 		swordSprite = Resources.LoadAll<Sprite> ("Textures/sword");
-
     }
 
 	void Start()
