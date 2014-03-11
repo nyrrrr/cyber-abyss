@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
     private float slowFixedDelta;
     private float slowMaxDelta;
 
+	// sounds
+	public AudioClip sfx_death;
+	private bool _audioOnce = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -77,10 +81,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        state = PlayerState.Dead;
-        movementComponent.enabled = false;
 
-		print (col.transform.name);
+		Death ();
+
 		if(col.transform.name == "Floor")
 		{
 			state = PlayerState.End;
@@ -89,8 +92,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        state = PlayerState.Dead;
-        movementComponent.enabled = false;
+		Death ();
 
         if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
         {
@@ -122,4 +124,15 @@ public class Player : MonoBehaviour
         Time.fixedDeltaTime = slowFixedDelta;
         Time.maximumDeltaTime = slowMaxDelta;
     }
+
+	private void Death()
+	{
+		if(!_audioOnce)
+		{
+			_audioOnce = true;
+			audio.PlayOneShot (sfx_death);
+		}
+		state = PlayerState.Dead;
+		movementComponent.enabled = false;
+	}
 }

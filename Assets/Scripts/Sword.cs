@@ -9,11 +9,16 @@ public class Sword : MonoBehaviour
 	private Player _player;
 	private GameObject _swoosh;
 
+	// sounds
+	public AudioClip sfx_swoosh;
+
+
     // Use this for initialization
     void Awake()
     {
         this.collider2D.enabled = false;
         renderer.enabled = false;
+
 
 		_swoosh = GameObject.Find ("Swoosh");
 		_swoosh.renderer.enabled = false;
@@ -30,7 +35,8 @@ public class Sword : MonoBehaviour
 		if(_player.GetComponent<Player>().state != Player.PlayerState.Dead && _player.GetComponent<Player>().state != Player.PlayerState.End)
 		{
 	        if (!isBlocked && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetMouseButtonDown(0)))
-	        {
+			{
+
 	            StartCoroutine(SwordSwing());
 	        }
 		} 
@@ -45,7 +51,8 @@ public class Sword : MonoBehaviour
     /// <TODO>this method will need some fine-tuning</TODO>
     /// <returns></returns>
     private IEnumerator SwordSwing()
-    {
+	{
+		audio.PlayOneShot (sfx_swoosh);
 		_swoosh.renderer.enabled = true;
         collider2D.enabled = true;
         isBlocked = true;
