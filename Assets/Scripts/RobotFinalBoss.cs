@@ -97,6 +97,7 @@ public class RobotFinalBoss : MonoBehaviour
             {
                 if (!_isShooting)
                 {
+
                     _isShooting = true;
                     _idleTime = (Time.time * 1000) + 800;
                 }

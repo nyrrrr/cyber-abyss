@@ -25,6 +25,10 @@ public class BossProjectile : MonoBehaviour
     private float _idle = 0;
 
     public bool _isSuper = false;
+	
+	// sounds
+	public AudioClip sfx_super, sfx_normal;
+	private bool _playedOnce = false;
 
     // Use this for initialization
     void Awake()
@@ -60,15 +64,31 @@ public class BossProjectile : MonoBehaviour
             if (_idle > Time.time * 1000)
             {
                 transform.position = new Vector2(_masterBoss.transform.position.x, _masterBoss.transform.position.y + 1);
-            }
+            } 
+			else 
+			{
+				if(!_playedOnce)
+				{
+					audio.PlayOneShot(sfx_super);
+					_playedOnce = true;
+				}
+			}
         }
         else
         {
             if (_moveDown)
-            {
+			{
                 _ypos -= 40 * Time.deltaTime;
                 transform.position = new Vector2(transform.position.x, (_player.transform.position.y - 3) + _ypos);
             }
+			else 
+			{
+				if(!_playedOnce)
+				{
+					audio.PlayOneShot(sfx_super);
+					_playedOnce = true;
+				}
+			}
         }
     }
 
