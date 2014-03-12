@@ -12,6 +12,7 @@ GameObject:
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
+  - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: SuperProjectile
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .342430234, y: 6.96118402, z: 0}
+  m_LocalPosition: {x: 1.88957679, y: -98.1898346, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,6 +100,20 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9775cc8b2649e941b5a1b62a2c62b98, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveDown: 0
   _isSuper: 1
-  sfx_super: {fileID: 8300000, guid: 35fe332a31e28d04b98f38fac332343c, type: 3}
+  sfx_super: {fileID: 8300000, guid: 0ab54d3f61b872f4a8787be844c2f038, type: 3}
   sfx_normal: {fileID: 8300000, guid: de2f549acdfe41249a2cce4708e2d78d, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:

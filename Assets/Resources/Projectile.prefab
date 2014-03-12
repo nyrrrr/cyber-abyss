@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveDown: 0
   _isSuper: 0
-  sfx_super: {fileID: 8300000, guid: 35fe332a31e28d04b98f38fac332343c, type: 3}
+  sfx_super: {fileID: 8300000, guid: 0ab54d3f61b872f4a8787be844c2f038, type: 3}
   sfx_normal: {fileID: 8300000, guid: de2f549acdfe41249a2cce4708e2d78d, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
