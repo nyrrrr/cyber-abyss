@@ -27,8 +27,8 @@ public class StartScript : MonoBehaviour {
 
         GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 250, 400, 800), "<color=white><size=15>Press any key to start</size></color>", centeredStyle);
 
-        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 90, 400, 800), "<color=white><size=10>a game made for #cyberpunkjam</size></color>", centeredStyle);
-        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 110, 400, 800), "<color=white><size=10>nyrrrr & adee</size></color>", centeredStyle);
+        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 90, 400, 800), "<color=white><size=10>a game made for #cyberpunkjam by</size></color>", centeredStyle);
+        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 110, 400, 800), "<color=white><size=10>Team 2UP</size></color>", centeredStyle);
 
         GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 160, 400, 800), "<color=white><size=10>Music by: DST</size></color>", centeredStyle);
     }
