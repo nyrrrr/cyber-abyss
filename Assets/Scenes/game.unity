@@ -6004,8 +6004,6 @@ GameObject:
   - 114: {fileID: 714315624}
   - 114: {fileID: 714315623}
   - 60: {fileID: 714315621}
-  - 58: {fileID: 714315625}
-  - 61: {fileID: 714315626}
   - 58: {fileID: 714315627}
   - 82: {fileID: 714315628}
   m_Layer: 0
@@ -6076,7 +6074,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 1887946315}
   m_GameObject: {fileID: 714315618}
-  m_Mass: 80
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .100000001
   m_GravityScale: .800000012
@@ -6111,30 +6109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   sfx_death: {fileID: 8300000, guid: 79e1252bf77892341a3668395359d110, type: 3}
---- !u!58 &714315625
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5800000, guid: 75707d94ae7bd1243873b849df2c52ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 1887946315}
-  m_GameObject: {fileID: 714315618}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .125
-  m_Center: {x: 0, y: -.400000006}
---- !u!61 &714315626
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 75707d94ae7bd1243873b849df2c52ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 1887946315}
-  m_GameObject: {fileID: 714315618}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Size: {x: .200000003, y: .5}
-  m_Center: {x: 0, y: -.200000003}
+  font: {fileID: 12800000, guid: 107fea4dc49f8984a9b0050e9d77312f, type: 3}
+  deathText: YOU DIED!!!
+  endReachedText: 
 --- !u!58 &714315627
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14241,7 +14218,26 @@ Prefab:
       propertyPath: m_BackGroundColor.b
       value: .152941182
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400002, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+      propertyPath: font
+      value: 
+      objectReference: {fileID: 12800000, guid: 107fea4dc49f8984a9b0050e9d77312f,
+        type: 3}
+    - target: {fileID: 11400002, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+      propertyPath: deathText
+      value: YOU DIED!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+      propertyPath: m_GravityScale
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5800000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
+    - {fileID: 6100000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 75707d94ae7bd1243873b849df2c52ce, type: 2}
   m_RootGameObject: {fileID: 714315618}
   m_IsPrefabParent: 0

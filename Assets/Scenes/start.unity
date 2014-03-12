@@ -165,7 +165,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 2a430feab3aee3346b6a2dec66d1e52e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 2a430feab3aee3346b6a2dec66d1e52e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a430feab3aee3346b6a2dec66d1e52e, type: 2}
@@ -308,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   font: {fileID: 12800000, guid: 107fea4dc49f8984a9b0050e9d77312f, type: 3}
   gameTitle: Cyber Abyss
+  height: 250
 --- !u!1 &1797154207
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,13 +324,14 @@ GameObject:
   - 82: {fileID: 1797154210}
   - 81: {fileID: 1797154209}
   - 114: {fileID: 1797154208}
+  - 114: {fileID: 1797154212}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1797154208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,3 +417,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1797154212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1797154207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0faa6f69141af4d948ccc47eca8a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0

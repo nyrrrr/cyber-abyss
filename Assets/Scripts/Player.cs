@@ -27,15 +27,20 @@ public class Player : MonoBehaviour
         Attacking,
         Falling,
         Dead,
-		End,
+        End,
     }
     public PlayerState state;
     private float slowFixedDelta;
     private float slowMaxDelta;
 
-	// sounds
-	public AudioClip sfx_death;
-	private bool _audioOnce = false;
+    // sounds
+    public AudioClip sfx_death;
+    private bool _audioOnce = false;
+    private GUIStyle centeredStyle;
+    public Font font;
+    public string deathText;
+    public string endReachedText;
+    private GameObject _sound;
 
     // Use this for initialization
     void Awake()
@@ -53,12 +58,14 @@ public class Player : MonoBehaviour
         slowTimeScale = Time.timeScale / slowFactor;
         slowFixedDelta = Time.fixedDeltaTime / slowFactor;
         slowMaxDelta = Time.maximumDeltaTime / slowFactor;
+
+        _sound = GameObject.Find("Sound");
     }
 
     // Update is called once per frame
     void Update()
     {
-		if (state == PlayerState.Dead || state == PlayerState.End)
+        if (state == PlayerState.Dead || state == PlayerState.End)
         {
             if (Input.anyKeyDown)
             {
@@ -66,11 +73,11 @@ public class Player : MonoBehaviour
             }
             SlowDown();
         }
-		else 
-		{
-			// to prevent rotation
-			transform.rotation = Quaternion.Euler(0, 0, 0);
-		}
+        else
+        {
+            // to prevent rotation
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
         // max velocity
         if (rigidbody2D.velocity.y <= -30)
@@ -82,17 +89,17 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
 
-		Death ();
+        Death();
 
-		if(col.transform.name == "Floor")
-		{
-			state = PlayerState.End;
-		}
+        if (col.transform.name == "Floor")
+        {
+            state = PlayerState.End;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-		Death ();
+        Death();
 
         if (col.gameObject.layer == LayerMask.NameToLayer("Projectile"))
         {
@@ -103,19 +110,24 @@ public class Player : MonoBehaviour
         }
     }
 
-
     void OnGUI()
     {
-		if (state == PlayerState.Dead)
-		{
-			GUI.Label(new Rect((Screen.width / 2) - 20, (Screen.height / 2) - 10, 40, 20), "DEAD!");
-			GUI.Label(new Rect((Screen.width / 2) - 60, (Screen.height / 2) + 10, 240, 20), "Any key for restart!");
-		}
-		else if (state == PlayerState.End)
-		{
-			GUI.Label(new Rect((Screen.width / 2) - 20, (Screen.height / 2) - 10, 40, 20), "YAY!");
-			GUI.Label(new Rect((Screen.width / 2) - 60, (Screen.height / 2) + 10, 240, 20), "Now what? :O");
-		}
+        if (state == PlayerState.Dead || state == PlayerState.End)
+        {
+            centeredStyle = GUI.skin.GetStyle("Label");
+            centeredStyle.alignment = TextAnchor.UpperCenter;
+            centeredStyle.font = font;
+        }
+        if (state == PlayerState.Dead)
+        {
+            GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 - 50, 400, 800), "<color=red><size=26>" + deathText + "</size></color>", centeredStyle);
+            GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 50, 400, 800), "<color=white><size=15>Press any key to restart</size></color>", centeredStyle);
+        }
+        else if (state == PlayerState.End)
+        {
+            GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 - 50, 400, 800), "<color=red><size=18>CONGRATULATIONS!!!</size></color>", centeredStyle);
+            GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 50, 400, 800), "<color=white><size=15>You wasted " + ((int)_sound.GetComponent<Counter>().counter / 60) + " minutes of your live to beat this game!</size></color>", centeredStyle);
+        }
     }
 
     public void SlowDown()
@@ -125,14 +137,14 @@ public class Player : MonoBehaviour
         Time.maximumDeltaTime = slowMaxDelta;
     }
 
-	private void Death()
-	{
-		if(!_audioOnce)
-		{
-			_audioOnce = true;
-			audio.PlayOneShot (sfx_death);
-		}
-		state = PlayerState.Dead;
-		movementComponent.enabled = false;
-	}
+    private void Death()
+    {
+        if (!_audioOnce)
+        {
+            _audioOnce = true;
+            audio.PlayOneShot(sfx_death);
+        }
+        state = PlayerState.Dead;
+        movementComponent.enabled = false;
+    }
 }
