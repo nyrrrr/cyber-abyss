@@ -5,6 +5,7 @@ public class StartScript : MonoBehaviour {
     private GUIStyle centeredStyle;
     public Font font;
     public string gameTitle;
+    public int height;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class StartScript : MonoBehaviour {
         centeredStyle.font = font;
         //camera.backgroundColor = new Color32(0, 0, 0, 0);
 
-        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 - 350, 400, 800), "<color=white><size=50> " + gameTitle + "</size></color>", centeredStyle);
+        GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 - height, 400, 800), "<color=white><size=50> " + gameTitle + "</size></color>", centeredStyle);
 
         GUI.Label(new Rect((Screen.width / 2) - 200, Screen.height / 2 + 250, 400, 800), "<color=white><size=15>Press any key to start</size></color>", centeredStyle);
 
